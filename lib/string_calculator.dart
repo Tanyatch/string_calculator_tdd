@@ -14,6 +14,14 @@ class StringCalculator {
 
     var normalized = numString.replaceAll('\n', delimiter);
     var parts = normalized.split(delimiter);
-    return parts.map((p) => int.parse(p)).fold(0, (a, b) => a + b);
+
+    var nums = parts.map((p) => int.parse(p)).toList();
+
+    var negatives = nums.where((n) => n < 0).toList();
+    if (negatives.isNotEmpty) {
+      throw Exception('negative numbers not allowed ${negatives.join(',')}');
+    }
+
+    return nums.fold(0, (a, b) => a + b);
   }
 }
