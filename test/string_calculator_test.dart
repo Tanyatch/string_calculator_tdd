@@ -52,4 +52,7 @@ void main() {
   test('supports multiple multi-character delimiters', () {
     expect(calculator.add('//[***][%%]\n1***2%%3'), 6);
   });
+  test('throws exception for invalid input', () {
+    expect(() => calculator.add('1,a,3'), throwsA(isA<FormatException>()));
+  });
 }
