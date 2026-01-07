@@ -40,4 +40,8 @@ void main() {
       ),
     );
   });
+  test('ignores numbers greater than 1000', () {
+    var calc = StringCalculator();
+    expect(calc.add('2,1001'), 2);
+  });
 }
