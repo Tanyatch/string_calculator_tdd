@@ -20,4 +20,19 @@ void main() {
   test('should handle new lines between numbers', () {
     expect(calculator.add('1\n2,3'), 6);
   });
+  test('should support custom delimiter', () {
+    expect(calculator.add('//;\n1;2'), 3);
+  });
+  test('should throw exception for negative numbers', () {
+    expect(
+      () => calculator.add('1,-2'),
+      throwsA(
+        predicate(
+          (e) =>
+              e is Exception &&
+              e.toString().contains('negative numbers not allowed -2'),
+        ),
+      ),
+    );
+  });
 }
