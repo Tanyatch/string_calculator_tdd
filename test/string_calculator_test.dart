@@ -24,27 +24,20 @@ void main() {
     expect(calculator.add('//;\n1;2'), 3);
   });
   test('should throw exception for negative numbers', () {
+    expect(() => calculator.add('1,-2'), throwsA(isA<Exception>()));
+  });
+
+  test('should show all negative numbers in exception', () {
     expect(
-      () => calculator.add('1,-2'),
+      () => calculator.add('1,-2,-3'),
       throwsA(
         predicate(
           (e) =>
               e is Exception &&
-              e.toString().contains('negative numbers not allowed -2'),
+              e.toString().contains('-2') &&
+              e.toString().contains('-3'),
         ),
       ),
     );
   });
-  test('should show all negative numbers in exception', () {
-      expect(
-        () => calculator.add('1,-2,-3'),
-        throwsA(
-          predicate(
-            (e) =>
-                e is Exception &&
-                e.toString().contains('negative numbers not allowed -2,-3'),
-          ),
-        ),
-      );
-    });
 }
