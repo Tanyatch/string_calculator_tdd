@@ -11,7 +11,10 @@ void main() {
   test('should return the number for single input', () {
     expect(calculator.add('1'), 1);
   });
-   test('should return sum for two comma-separated numbers', () {
-      expect(calculator.add('1,4'), 5);
-    });
+  test('should return sum for two comma-separated numbers', () {
+    expect(calculator.add('1,4'), 5);
+  });
+  test('should handle any amount of numbers', () {
+    expect(calculator.add('1,2,3,4'), 10);
+  });
 }
