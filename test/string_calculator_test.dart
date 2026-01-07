@@ -55,4 +55,8 @@ void main() {
   test('throws exception for invalid input', () {
     expect(() => calculator.add('1,a,3'), throwsA(isA<FormatException>()));
   });
+  test('ignores empty parts between delimiters', () {
+    expect(calculator.add('1,,3'), 4);
+    expect(calculator.add(',1,2,'), 3);
+  });
 }
