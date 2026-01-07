@@ -41,11 +41,13 @@ void main() {
     );
   });
   test('ignores numbers greater than 1000', () {
-    var calc = StringCalculator();
-    expect(calc.add('2,1001'), 2);
+   
+    expect(calculator.add('2,1001'), 2);
   });
   test('supports multi-character delimiter', () {
-    var calc = StringCalculator();
-    expect(calc.add('//[***]\n1***2***3'), 6);
+    expect(calculator.add('//[***]\n1***2***3'), 6);
+  });
+   test('supports multiple delimiters', () {
+    expect(calculator.add('//[*][%]\n1*2%3'), 6);
   });
 }
